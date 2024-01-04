@@ -8,6 +8,7 @@ We are currently working on a Digital Twin and AR project, focusing on CO2 and T
 
 # 💻 Tech Stack:
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white)
+Fusion 360
 
 
 ### ✍️ Random Dev Quote
@@ -27,3 +28,9 @@ We are currently working on a Digital Twin and AR project, focusing on CO2 and T
 1. Unity version 2022.3.2f1c1 LTS
 2. Plug-ins: UniGLTF-1.27,https://github.com/ousttrue/UniGLTF/releases & XCharts, https://github.com/XCharts-Team/XCharts/releases/tag/v3.8.0
 3. Material pack: https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182
+
+# Blender:
+### Prerequisites 
+1. Blender version 3.3.0
+2. Add-on Poliigon https://www.poliigon.com
+3. Add-on Blender Kit https://www.blenderkit.com
