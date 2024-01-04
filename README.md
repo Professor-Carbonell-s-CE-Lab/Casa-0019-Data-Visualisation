@@ -1,9 +1,8 @@
 # Casa-0019-Data-Visualisation
 
-# Professor-Carbonells-Lab
+###Professor-Carbonells-Lab
 BimOps Co2 &amp; Temperature Monitoring
-# 💫 About Us:
-We are currently working on a Digital Twin and AR project, focusing on CO2 and Temperature readings from One Pool Streets Building management Data.
+# 💫 Read Me:
 
 Hello, this  project focuses on enhancing environmental awareness through Augmented Reality (AR) through a Digital Twin and a physical device, specifically targeting CO2  and temperature in the context of the CE-Lab and one Pool Street. Our project features an animated AR character, designed to bridge the gap between environmental data and user-friendly and educational interaction.
 
