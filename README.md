@@ -9,7 +9,7 @@ Hello, this  project focuses on enhancing environmental awareness through Augmen
 Key Features
 Virtual CE-Lab: A digital twin of a physical lab environment, created using Blender, enriched with realistic textures and lighting to mirror actual conditions.
 Data Visualization: Real-time data visualization of environmental metrics like CO2 levels and temperature in an interactive AR dashboard.
-A Physical devicee that displays temperature reading of One Pool Street, created by 3D and UV printing.
+A Physical devicee that displays temperature reading of One Pool Street, created by 3D and UV printing. The room allow to change by press the two buttons.
 
 User Interaction: Engaging user interface in Unity that allows users to interact with "Professor Carbonell" for an immersive educational experience.
 
@@ -51,3 +51,16 @@ Fusion 360
 1. Blender version 3.3.0
 2. Add-on Poliigon https://www.poliigon.com
 3. Add-on Blender Kit https://www.blenderkit.com
+
+# Fusion 360
+### Designed components
+1. Gauge Container: Serves as the main body housing all internal components.
+2. Spur Gear with 30 Teeth: Engages with the smaller gear to transmit motion.
+3. Spur Gear with 14 Teeth: Works in conjunction with the larger gear.
+4. Pointer: Indicates the measured value on the gauge face.
+5. Top Lid: Covers and protects the internal mechanism.
+6. Gauge Face: Displays the readings, made of clear acrylic for clarity.
+
+# 3D printing 
+1. 3D Printed Parts: Except for the acrylic gauge face, all components are produced using 3D printing technology.
+2. Acrylic Gauge Face: A 3mm acrylic board, cut using a laser cutter for precision.
