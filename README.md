@@ -2,8 +2,8 @@
 
 # Professor-Carbonells-Lab
 BimOps Co2 &amp; Temperature Monitoring
-# 💫 About Me:
-We are currently working on a Digital Twin and AR project, focusing on CO@ and Temperature readings from One Pool Streets Building management Data.
+# 💫 About Us:
+We are currently working on a Digital Twin and AR project, focusing on CO2 and Temperature readings from One Pool Streets Building management Data.
 
 
 # 💻 Tech Stack:
