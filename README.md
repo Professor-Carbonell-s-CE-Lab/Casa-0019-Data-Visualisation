@@ -43,8 +43,12 @@ Fusion 360
 # Unity:
 ### Prerequisites
 1. Unity version 2022.3.2f1c1 LTS
-2. Plug-ins: UniGLTF-1.27,https://github.com/ousttrue/UniGLTF/releases & XCharts, https://github.com/XCharts-Team/XCharts/releases/tag/v3.8.0
-3. Material pack: https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182
+2. Plug-ins: UniGLTF-1.27-https://github.com/ousttrue/UniGLTF/releases & XCharts-https://github.com/XCharts-Team/XCharts/releases/tag/v3.8.0
+3. Assets: Material pack-https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182, lean touch-https://assetstore.unity.com/packages/tools/input-management/lean-touch-30111
+4. Carbonell prodessor model-https://sketchfab.com/3d-models/cartoon-teacher-model-2e824e4c1d224fb8824937f134f1592f
+
+
+   
 
 # Blender:
 ### Prerequisites 
