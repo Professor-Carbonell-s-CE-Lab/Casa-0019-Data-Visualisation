@@ -18,25 +18,31 @@
 
 #include "arduino_secrets.h" 
 
+// read data from arduino_secrets.h
 const char* ssid     = SECRET_SSID;
 const char* password = SECRET_PASS;
 const char* mqttuser = SECRET_MQTTUSER;
 const char* mqttpass = SECRET_MQTTPASS;
 
+// define the mqtt server and topic to subscribe
 const char* mqtt_server = "mqtt.cetools.org";
 const char* topic_GF = "UCL/OPSEBO/004/Room/CDS/Value";
 const char* topic_1F = "UCL/OPSEBO/107/Room/CDS/Value";
 const char* topic_2F = "UCL/OPSEBO/201/NextToDoorTo206/CDS/Value";
 const char* topic_3F = "UCL/OPSEBO/313/Room/CDS/Value";
+
 const char *topics[4] = {topic_GF, topic_1F, topic_2F, topic_3F};
 const char *titles[4] = {"004", "107", "201", "313"};
+
 WiFiClient espClient;
 PubSubClient client(espClient);
+
 long lastMsg = 0;
 int values[4] = {0, 0, 0, 0};
 int angle = 0;
 int count_tft = 0;
 int topic_count = 0;
+
 boolean isPressed = false;
 boolean initial = true;
 
@@ -45,10 +51,13 @@ Servo myservo;
 
 void setup() {
   Serial.begin(115200);
+  // set button pin mode
   pinMode(b_next, INPUT);
   pinMode(b_prev, INPUT);
   delay(10);
+  // set the range of PWM wave
   myservo.attach(2, 500, 1750);
+  // set starting screen
   tft.begin();
   tft.setRotation(1);
   tft.fillScreen(ILI9341_BLACK);
@@ -56,14 +65,14 @@ void setup() {
   tft.setTextColor(ILI9341_GREEN);    
   tft.setTextSize(3);
   tft.println("Connecting");
-
+  // connect to wifi
   startWifi();
+  // set main screen display
   tft.fillScreen(ILI9341_BLACK);
   tft.setCursor(60, 0);
   tft.setTextColor(ILI9341_RED);    
   tft.setTextSize(3);
   tft.println("Current Room:");
-  
   tft.setTextColor(ILI9341_GREEN);    
   tft.setTextSize(2);
   tft.setCursor(0, 120);
@@ -72,28 +81,27 @@ void setup() {
   tft.setTextColor(ILI9341_WHITE);    
   tft.setTextSize(2);
   tft.println("ppm");
-
+  // set mqtt subscription
   client.setServer(mqtt_server, 1884);
   client.setCallback(callback);
   }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // connect and reconnect to wifi
   if (!client.connected()) {
-    //TODO: add a connecting display
     reconnect();
   }
   client.loop();
-
-  //TODO: add button actions
+  // get button status
   int next = digitalRead(b_next);
   int prev = digitalRead(b_prev);
-
+  // if next button was pressed
   if(next == HIGH){
     topic_count += 1;
     topic_count = topic_count % 4;
     isPressed = true;
   }
+  // if prev button was pressed
   if(prev == HIGH){
     topic_count -= 1;
     if (topic_count < 0){
@@ -101,7 +109,7 @@ void loop() {
     }
     isPressed = true;
   }
-
+  // output the room data to screen
   if(initial){
     tft.setCursor(90, 50);
     tft.setTextColor(ILI9341_WHITE);
@@ -111,7 +119,7 @@ void loop() {
     showText(topic_count);
     initial = false;
   }
-  
+  // update pointer after press buttons
   while(isPressed){
     tft.setCursor(90, 50);
     tft.setTextColor(ILI9341_WHITE);
@@ -125,6 +133,7 @@ void loop() {
   } 
   servoAction(values[topic_count]);
   tft.setRotation(1);
+  // update screen data after 100 times loop
   if(count_tft == 100){
     showText(topic_count);
     count_tft = 0;
@@ -132,7 +141,7 @@ void loop() {
   delay(100);
   count_tft += 1;
 }
-
+// show co2 data on screen
 void showText(int topic_count) {
   tft.fillRect(200, 122, 45, 30, ILI9341_BLACK); 
   tft.setCursor(200, 122);
@@ -140,7 +149,7 @@ void showText(int topic_count) {
   tft.setTextSize(2);
   tft.println(values[topic_count]);
 }
-
+// the method to connect to wifi
 void startWifi() {
   // We start by connecting to a WiFi network
   Serial.println();
@@ -158,7 +167,7 @@ void startWifi() {
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP()); 
 }
-
+// wifi reconnect method
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
@@ -183,12 +192,13 @@ void reconnect() {
     }
   }
 }
-
+// mqtt callback handler
 void callback(char* topic, byte* payload, unsigned int length) {
   char msg[1024];
   memcpy(msg, payload, length);
   msg[length] = '\0';
 
+  // json handler
   StaticJsonDocument<1024> doc;
   DeserializationError error = deserializeJson(doc, msg);
 
@@ -216,8 +226,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.print((char)payload[i]);
   }
 }
-
+// servo action handler
 void servoAction(int value){
+  // move by pre-defined value
   if(value < 400 && value >= 300){
     int angle_temp = (value - 300) / 100 * 30;
     if(angle > angle_temp){
